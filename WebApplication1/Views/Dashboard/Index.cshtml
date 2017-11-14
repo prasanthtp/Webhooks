@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Activity Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-app="activityModule">
+    <div class="container" ng-controller="activityController">
+        <h2>Activity Dashboard</h2>
+        <p>Glimpse of all activities of Bitbucket repository <c>repository name</c></p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Activity</th>
+                    <th>Action</th>
+                    <th>Description</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            @{ int count = 0;}
+            <tbody ng-repeat="activity in Activities">
+                @{ count++;}
+                <tr ng-class-odd="'warning'" ng-class-even="'success'">
+                    <td>{{activity.Activity}}</td>
+                    <td>{{activity.Action}}</td>
+                    <td>{{activity.Description}}</td>                    
+                    <td ng-click="getActivity({{activity.ActivityId}})">View Details</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+@*@section scripts
+{
+    <script src="~/Scripts/app/app.js"></script>
+    <script src="~/Scripts/app/controller.js"></script>
+    <script src="~/Scripts/app/service.js"></script>
+}*@
